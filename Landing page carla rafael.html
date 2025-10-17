@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carla Rafael - Mentora em Alta Produtividade & Performance | CMRFormação</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon { width: 45px; height: 45px; }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--turquoise); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--lime);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1) 0%, rgba(192, 215, 45, 0.1) 100%);
+            padding: 100px 5% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(77, 208, 225, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, 50px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(77, 208, 225, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            border: 2px solid var(--turquoise);
+        }
+
+        .btn-secondary:hover { background: var(--turquoise); color: white; }
+
+        .hero-image-placeholder {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: white;
+            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.3);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--lime));
+            border-radius: 2px;
+        }
+
+        /* Sobre Section */
+        .sobre {
+            background: var(--light);
+        }
+
+        .sobre-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .sobre-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificacao-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--turquoise);
+        }
+
+        .certificacao-card:nth-child(even) { border-top-color: var(--lime); }
+
+        .certificacao-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .certificacao-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Problema Section */
+        .problema {
+            background: white;
+        }
+
+        .problema-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .problema-item {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            border-left: 5px solid var(--turquoise);
+        }
+
+        .problema-item:nth-child(even) { border-left-color: var(--lime); }
+
+        .problema-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--turquoise);
+        }
+
+        /* Benefícios Section */
+        .beneficios {
+            background: var(--light);
+        }
+
+        .beneficios-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .beneficio-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .beneficio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .beneficio-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .beneficio-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Programas Section */
+        .programas {
+            background: white;
+        }
+
+        .programas-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .programa-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border-top: 5px solid var(--turquoise);
+        }
+
+        .programa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .programa-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .programa-card .preco {
+            font-size: 2rem;
+            color: var(--turquoise);
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+
+        .programa-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .programa-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .programa-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--lime);
+            font-weight: bold;
+        }
+
+        /* Testemunhos Section */
+        .testemunhos {
+            background: var(--light);
+        }
+
+        .testemunhos-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testemunho-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .testemunho-card::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: var(--turquoise);
+            opacity: 0.3;
+        }
+
+        .testemunho-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .testemunho-autor {
+            font-weight: bold;
+            color: var(--turquoise);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--light);
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--turquoise);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #555;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--turquoise);
+            border: none;
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+            }
+            
+            .hero-text h1 { font-size: 2.5rem; }
+            
+            .hero-image-placeholder { 
+                width: 300px; 
+                height: 300px; 
+                font-size: 80px;
+                margin: 0 auto;
+            }
+            
+            .nav-links { 
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active { display: flex; }
+            
+            .mobile-menu-btn { display: block; }
+            
+            .cta-buttons { justify-content: center; }
+            
+            .section-title { font-size: 2rem; }
+            
+            .programas-grid,
+            .testemunhos-grid,
+            .beneficios-grid,
+            .problema-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#hero" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#programas">Programas</a></li>
+                <li><a href="#testemunhos">Testemunhos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Maximiza os teus <span class="highlight">Resultados</span> sem Comprometer a tua Vida</h1>
+                <p>Mentora e Formadora em Alta Produtividade & Performance. 
+                Ajudo profissionais a alcançarem níveis excecionais de produtividade mantendo o equilíbrio e bem-estar.</p>
+                <div class="cta-buttons">
+                    <a href="#contacto" class="btn btn-primary">Agendar Consulta</a>
+                    <a href="#programas" class="btn btn-secondary">Ver Programas</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">CR</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <h2 class="section-title">Carla Rafael</h2>
+        <p class="sobre-intro">Com mais de 10 anos de experiência, especializo-me em transformar profissionais em líderes altamente produtivos através de metodologias comprovadas e acompanhamento personalizado.</p>
+        <div class="sobre-content">
+            <div class="certificacao-card">
+                <h3>🎯 Alta Performance</h3>
+                <p>Certificação Internacional em Coaching e Alta Performance</p>
+            </div>
+            <div class="certificacao-card">
+                <h3>⚡ Produtividade</h3>
+                <p>Especialista em Metodologias de Produtividade GTD e Agile</p>
+            </div>
+            <div class="certificacao-card">
+                <h3>🧠 Inteligência Emocional</h3>
+                <p>Formação Avançada em IE e Programação Neurolinguística</p>
+            </div>
+            <div class="certificacao-card">
+                <h3>👥 Liderança</h3>
+                <p>Certificação em Liderança Transformacional e Gestão de Equipas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="problema" id="problema">
+        <h2 class="section-title">Reconheces-te nestes Desafios?</h2>
+        <div class="problema-grid">
+            <div class="problema-item">
+                <h3>⏰ Falta de Tempo</h3>
+                <p>Sentes que os dias são curtos demais e nunca consegues fazer tudo o que planeaste?</p>
+            </div>
+            <div class="problema-item">
+                <h3>😰 Stress Constante</h3>
+                <p>Vives numa corrida contra o relógio, sempre a apagar incêndios e com a sensação de estar sempre atrasado?</p>
+            </div>
+            <div class="problema-item">
+                <h3>🔄 Procrastinação</h3>
+                <p>Adias tarefas importantes e sentes culpa por não conseguir avançar nos teus objetivos?</p>
+            </div>
+            <div class="problema-item">
+                <h3>⚖️ Desequilíbrio</h3>
+                <p>O trabalho consome toda a tua energia e não sobra tempo para ti, família ou lazer?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="beneficios" id="beneficios">
+        <h2 class="section-title">O que Vais Alcançar</h2>
+        <div class="beneficios-grid">
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🎯</div>
+                <h3>Foco Laser</h3>
+                <p>Elimina distrações e concentra-te no que realmente importa para atingir os teus objetivos.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">⚡</div>
+                <h3>Produtividade x3</h3>
+                <p>Triplica a tua capacidade de execução com metodologias comprovadas e personalizadas.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🧘</div>
+                <h3>Equilíbrio Real</h3>
+                <p>Conquista tempo para ti e para quem amas, sem sacrificar os teus resultados profissionais.</p>
+            </div>
+            <div class="beneficio-card">
+                <div class="beneficio-icon">🚀</div>
+                <h3>Crescimento Acelerado</h3>
+                <p>Desenvolve competências que te destacam e aceleram a tua progressão na carreira.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="programas" id="programas">
+        <h2 class="section-title">Programas de Transformação</h2>
+        <div class="programas-grid">
+            <div class="programa-card">
+                <h3>Mentoria Individual</h3>
+                <p class="preco">Sob Consulta</p>
+                <p>Acompanhamento personalizado para transformação profunda.</p>
+                <ul>
+                    <li>Sessões 1:1 semanais</li>
+                    <li>Plano personalizado</li>
+                    <li>Suporte via WhatsApp</li>
+                    <li>Materiais exclusivos</li>
+                    <li>Revisões mensais</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary">Saber Mais</a>
+            </div>
+            <div class="programa-card">
+                <h3>Formação em Grupo</h3>
+                <p class="preco">€497</p>
+                <p>Workshops intensivos com grupo reduzido.</p>
+                <ul>
+                    <li>8 semanas de formação</li>
+                    <li>Acesso à comunidade</li>
+                    <li>Material de apoio</li>
+                    <li>Certificado final</li>
+                    <li>Sessões Q&A</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary">Inscrever-me</a>
+            </div>
+            <div class="programa-card">
+                <h3>Consultoria Empresarial</h3>
+                <p class="preco">Sob Consulta</p>
+                <p>Transforme a produtividade da sua equipa.</p>
+                <ul>
+                    <li>Diagnóstico organizacional</li>
+                    <li>Formação in-company</li>
+                    <li>Implementação de sistemas</li>
+                    <li>Acompanhamento contínuo</li>
+                    <li>Relatórios de progresso</li>
+                </ul>
+                <a href="#contacto" class="btn btn-primary">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testemunhos" id="testemunhos">
+        <h2 class="section-title">O que Dizem os Clientes</h2>
+        <div class="testemunhos-grid">
+            <div class="testemunho-card">
+                <p class="testemunho-text">A Carla transformou completamente a minha forma de trabalhar. Consegui triplicar a minha produtividade e ainda assim tenho mais tempo para a família. Incrível!</p>
+                <p class="testemunho-autor">— Ana Silva, CEO</p>
+            </div>
+            <div class="testemunho-card">
+                <p class="testemunho-text">As metodologias da Carla são práticas e funcionam mesmo. Em 3 meses eliminei a procrastinação e atingi objetivos que adiava há anos.</p>
+                <p class="testemunho-autor">— João Pereira, Empreendedor</p>
+            </div>
+            <div class="testemunho-card">
+                <p class="testemunho-text">Finalmente encontrei o equilíbrio que procurava. O acompanhamento personalizado fez toda a diferença. Recomendo a 100%!</p>
+                <p class="testemunho-autor">— Maria Costa, Gestora</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funcionam as sessões de mentoria?
+                </div>
+                <div class="faq-answer">
+                    As sessões são realizadas online via Zoom, com duração de 60 minutos. Trabalhamos de forma personalizada nos teus desafios específicos e criamos um plano de ação adaptado à tua realidade.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quanto tempo demora a ver resultados?
+                </div>
+                <div class="faq-answer">
+                    Os primeiros resultados aparecem já nas primeiras semanas. No entanto, para uma transformação profunda e duradoura, recomendo um acompanhamento mínimo de 3 meses.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Os programas têm garantia?
+                </div>
+                <div class="faq-answer">
+                    Sim! Se após as primeiras 3 sessões sentires que o programa não está a funcionar para ti, devolvo 100% do teu investimento.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    É possível conciliar com o meu trabalho atual?
+                </div>
+                <div class="faq-answer">
+                    Absolutamente! Os programas foram desenhados precisamente para profissionais com agendas ocupadas. As metodologias adaptam-se à tua rotina e vamos trabalhar para otimizar o tempo que já tens disponível.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <h2>Pronta para Transformar os Teus Resultados?</h2>
+        <p>Não dês tempo ao tempo, dá vida ao tempo!</p>
+        <a href="mailto:carla@cmrformacao.pt" class="btn btn-white">Agendar Consulta Gratuita</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 CMRFormação - Todos os direitos reservados</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">carla@cmrformacao.pt</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.style.boxShadow = window.scrollY > 100 
+                ? '0 5px 30px rgba(0,0,0,0.15)' 
+                : '0 2px 20px rgba(0,0,0,0.1)';
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const wasActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                if (!wasActive) {
+                    

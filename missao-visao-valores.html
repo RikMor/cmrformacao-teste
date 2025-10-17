@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão, Visão e Valores | CMRFormação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 208, 225, 0.3);
+        }
+
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1) 0%, rgba(192, 215, 45, 0.1) 100%);
+            padding: 150px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(77, 208, 225, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 40px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mvv-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .mvv-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .mvv-card {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--turquoise), var(--lime));
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .mvv-card.missao::before {
+            background: linear-gradient(90deg, var(--turquoise), #5dd7e7);
+        }
+
+        .mvv-card.visao::before {
+            background: linear-gradient(90deg, var(--lime), #d4e84b);
+        }
+
+        .mvv-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.3);
+        }
+
+        .mvv-card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .mvv-card p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .valores-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.05) 0%, rgba(192, 215, 45, 0.05) 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .valores-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .valor-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            border-bottom: 4px solid transparent;
+        }
+
+        .valor-card:nth-child(1) {
+            border-bottom-color: var(--turquoise);
+        }
+
+        .valor-card:nth-child(2) {
+            border-bottom-color: var(--lime);
+        }
+
+        .valor-card:nth-child(3) {
+            border-bottom-color: #667eea;
+        }
+
+        .valor-card:nth-child(4) {
+            border-bottom-color: #f59e0b;
+        }
+
+        .valor-card:nth-child(5) {
+            border-bottom-color: #ec4899;
+        }
+
+        .valor-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .valor-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .valor-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .valor-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .compromisso-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .compromisso-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            border-radius: 25px;
+            padding: 4rem;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(77, 208, 225, 0.3);
+        }
+
+        .compromisso-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .compromisso-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--turquoise);
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--turquoise);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mvv-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .compromisso-content {
+                padding: 2.5rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#areas">Áreas</a></li>
+                <li><a href="index.html#formacoes">Formações</a></li>
+                <li><a href="Landing page carla rafael.html">Carla Rafael</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="index.html#contacto" class="nav-cta">Pedir Informações</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Missão, Visão e Valores</h1>
+            <p>
+                Conheça os princípios que nos guiam e o compromisso que assumimos 
+                com a excelência formativa e o desenvolvimento dos nossos clientes.
+            </p>
+        </div>
+    </section>
+
+    <section class="mvv-section">
+        <div class="mvv-container">
+            <div class="mvv-card missao">
+                <div class="mvv-icon">🎯</div>
+                <h2>Missão</h2>
+                <p>
+                    Potenciar o crescimento pessoal e organizacional, através de uma equipa de peritos 
+                    em várias áreas, com ambição, munidos de metodologias consolidadas, ferramentas 
+                    tecnológicas avançadas e projetos formativos diferenciadores, de acordo com as 
+                    necessidades de cada cliente.
+                </p>
+            </div>
+
+            <div class="mvv-card visao">
+                <div class="mvv-icon">🧭</div>
+                <h2>Visão</h2>
+                <p>
+                    Ser a bússola no que concerne ao referencial de qualidade e excelência formativa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="valores-section">
+        <h2 class="section-title">Os Nossos Valores</h2>
+        <p class="section-subtitle">
+            Princípios fundamentais que orientam todas as nossas ações e decisões, 
+            garantindo a qualidade e a confiança dos nossos serviços.
+        </p>
+        <div class="valores-grid">
+            <div class="valor-card">
+                <span class="valor-icon">🤝</span>
+                <h3>Compromisso</h3>
+                <p>
+                    Dedicação total aos objetivos e necessidades dos nossos clientes, 
+                    assumindo responsabilidade pelos resultados alcançados.
+                </p>
+            </div>
+
+            <div class="valor-card">
+                <span class="valor-icon">🔄</span>
+                <h3>Flexibilidade</h3>
+                <p>
+                    Capacidade de adaptação às necessidades específicas de cada cliente, 
+                    oferecendo soluções personalizadas e eficazes.
+                </p>
+            </div>
+
+            <div class="valor-card">
+                <span class="valor-icon">📐</span>
+                <h3>Rigor</h3>
+                <p>
+                    Precisão e meticulosidade em todos os processos formativos, 
+                    garantindo qualidade e conformidade com os mais altos padrões.
+                </p>
+            </div>
+
+            <div class="valor-card">
+                <span class="valor-icon">⚡</span>
+                <h3>Exigência</h3>
+                <p>
+                    Busca constante pela superação e melhoria contínua, 
+                    estabelecendo metas ambiciosas e desafiadoras.
+                </p>
+            </div>
+
+            <div class="valor-card">
+                <span class="valor-icon">⭐</span>
+                <h3>Excelência</h3>
+                <p>
+                    Compromisso com a mais alta qualidade em todos os aspetos da formação, 
+                    proporcionando experiências transformadoras.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="compromisso-section">
+        <div class="compromisso-content">
+            <h2>O Nosso Compromisso com a Excelência</h2>
+            <p>
+                Na CMRFormação, não nos limitamos a transmitir conhecimento. Criamos experiências 
+                transformadoras que impulsionam o crescimento pessoal e profissional dos nossos formandos. 
+                Cada projeto é desenvolvido com paixão, dedicação e um profundo respeito pelas aspirações 
+                de cada cliente.
+            </p>
+            <a href="index.html#formacoes" class="btn btn-white">Conheça as Nossas Formações</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CMRFormação</h3>
+                <p>Centro de Formação Profissional dedicado à excelência e qualidade na formação de profissionais.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index.html">Página Principal</a>
+                <a href="index.html#areas">Áreas de Formação</a>
+                <a href="Landing page carla rafael.html">Carla Rafael</a>
+                <a href="index.html#contacto">Contactos</a>
+            </div>
+            <div class="footer-section">
+                <h3>Áreas de Formação</h3>
+                <a href="informatica-tecnologia.html">Informática</a>
+                <a href="gestao-administracao.html">Gestão</a>
+                <a href="index.html#areas">Línguas</a>
+                <a href="index.html#areas">Segurança</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contactos</h3>
+                <p>📧 geral@cmrformacao.pt</p>
+                <p>📞 +351 XXX XXX XXX</p>
+                <p>📍 Ponte de Lima, Portugal</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CMRFormação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

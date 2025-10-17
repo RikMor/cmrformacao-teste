@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informática e Tecnologia | CMRFormação - Cursos Certificados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --tech-purple: #667eea;
+            --tech-blue: #0ea5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 208, 225, 0.3);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(77, 208, 225, 0.1) 100%);
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--tech-purple), var(--turquoise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .hero-feature::before {
+            content: '✓';
+            color: var(--lime);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .hero-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .tech-icon-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .tech-icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .tech-icon-box span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-icon-box p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--tech-purple), var(--turquoise));
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .cursos-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .cursos-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .curso-card {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border-top: 4px solid var(--tech-purple);
+        }
+
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .curso-header {
+            background: linear-gradient(135deg, var(--tech-purple), var(--turquoise));
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .curso-header span {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .curso-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .curso-body {
+            padding: 2rem;
+        }
+
+        .curso-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            color: var(--tech-purple);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .curso-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .curso-topics {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .curso-topics li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .curso-topics li::before {
+            content: '▸';
+            color: var(--lime);
+            font-weight: bold;
+        }
+
+        .curso-info {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .curso-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .niveis-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(77, 208, 225, 0.05) 100%);
+        }
+
+        .niveis-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .nivel-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .nivel-card:nth-child(1) {
+            border-bottom-color: #4ade80;
+        }
+
+        .nivel-card:nth-child(2) {
+            border-bottom-color: #fbbf24;
+        }
+
+        .nivel-card:nth-child(3) {
+            border-bottom-color: #f87171;
+        }
+
+        .nivel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .nivel-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nivel-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .nivel-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .nivel-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .nivel-card li {
+            padding: 0.4rem 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .nivel-card li::before {
+            content: '• ';
+            color: var(--turquoise);
+        }
+
+        .vantagens-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .vantagens-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .vantagem-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .vantagem-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .vantagem-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .vantagem-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .vantagem-content p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--tech-purple), var(--turquoise));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--tech-purple);
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--turquoise);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .niveis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vantagens-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#areas">Áreas</a></li>
+                <li><a href="index.html#formacoes">Formações</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="nav-cta">Inscrever Agora</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="highlight">Informática & Tecnologia</span><br>
+                    para o Futuro Digital
+                </h1>
+                <p>
+                    Desenvolve competências tecnológicas essenciais para o mercado de trabalho moderno. 
+                    Formação prática, certificada e orientada para resultados.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature">Certificação Oficial</div>
+                    <div class="hero-feature">Formadores Especialistas</div>
+                    <div class="hero-feature">Prática Real</div>
+                </div>
+                <a href="#cursos" class="btn btn-primary">Explorar Cursos</a>
+            </div>
+            <div class="hero-icons">
+                <div class="tech-icon-box">
+                    <span>💻</span>
+                    <p>Microsoft Office</p>
+                </div>
+                <div class="tech-icon-box">
+                    <span>🌐</span>
+                    <p>Web Design</p>
+                </div>
+                <div class="tech-icon-box">
+                    <span>🔒</span>
+                    <p>Segurança</p>
+                </div>
+                <div class="tech-icon-box">
+                    <span>📱</span>
+                    <p>Marketing Digital</p>
+                </div>
+                <div class="tech-icon-box">
+                    <span>💾</span>
+                    <p>Bases de Dados</p>
+                </div>
+                <div class="tech-icon-box">
+                    <span>☁️</span>
+                    <p>Cloud Computing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cursos-section" id="cursos">
+        <h2 class="section-title">Cursos Disponíveis</h2>
+        <p class="section-subtitle">
+            Formação completa em tecnologias atuais com aplicação prática imediata no mercado de trabalho
+        </p>
+        <div class="cursos-grid">
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>📊</span>
+                    <h3>Microsoft Office Avançado</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Mais Procurado</span>
+                    <p class="curso-description">
+                        Domine Word, Excel e PowerPoint ao nível profissional. Aprenda fórmulas avançadas, 
+                        macros, automatizações e apresentações de impacto.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Excel: Fórmulas, Tabelas Dinâmicas e Macros</li>
+                        <li>Word: Documentos Profissionais e Mala Direta</li>
+                        <li>PowerPoint: Apresentações Visuais</li>
+                        <li>Integração entre Aplicações</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 50 horas</span>
+                        <span>👥 Presencial/Online</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>🌐</span>
+                    <h3>Programação Web</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Alta Empregabilidade</span>
+                    <p class="curso-description">
+                        Cria websites modernos e responsivos. Aprende HTML5, CSS3, JavaScript e frameworks 
+                        populares do mercado.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>HTML5 e CSS3 Moderno</li>
+                        <li>JavaScript e jQuery</li>
+                        <li>Design Responsivo</li>
+                        <li>Introdução a React ou Vue.js</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 80 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>📱</span>
+                    <h3>Marketing Digital & Redes Sociais</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Tendência</span>
+                    <p class="curso-description">
+                        Estratégias digitais para marcas e negócios. Gestão de redes sociais, anúncios 
+                        online e análise de métricas.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Estratégia de Conteúdo Digital</li>
+                        <li>Facebook Ads e Instagram Ads</li>
+                        <li>Google Ads e SEO Básico</li>
+                        <li>Analytics e Métricas</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 40 horas</span>
+                        <span>👥 Online</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>🔒</span>
+                    <h3>Segurança Informática</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Essencial</span>
+                    <p class="curso-description">
+                        Protege sistemas e dados. Aprende boas práticas de cibersegurança, 
+                        prevenção de ataques e gestão de riscos.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Fundamentos de Cibersegurança</li>
+                        <li>Proteção de Dados (RGPD)</li>
+                        <li>Gestão de Passwords e Autenticação</li>
+                        <li>Backup e Recuperação</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 30 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>💾</span>
+                    <h3>Bases de Dados e SQL</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Técnico</span>
+                    <p class="curso-description">
+                        Gestão e consulta de bases de dados relacionais. SQL, design de bases de dados 
+                        e otimização de queries.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Fundamentos de Bases de Dados</li>
+                        <li>SQL: Queries e Manipulação</li>
+                        <li>Design e Normalização</li>
+                        <li>MySQL/PostgreSQL</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 45 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>🎨</span>
+                    <h3>Adobe Creative Suite</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Criativo</span>
+                    <p class="curso-description">
+                        Ferramentas profissionais de design. Photoshop, Illustrator e InDesign 
+                        para projetos gráficos de qualidade.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Photoshop: Edição de Imagem</li>
+                        <li>Illustrator: Design Vetorial</li>
+                        <li>InDesign: Layout Editorial</li>
+                        <li>Projetos Práticos Reais</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 60 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="niveis-section">
+        <h2 class="section-title">Formação para Todos os Níveis</h2>
+        <p class="section-subtitle">
+            Desde iniciantes até utilizadores avançados, temos o curso certo para ti
+        </p>
+        <div class="niveis-grid">
+            <div class="nivel-card">
+                <div class="nivel-icon">🌱</div>
+                <h3>Iniciante</h3>
+                <p>Ideal para quem está a começar ou quer consolidar bases</p>
+                <ul>
+                    <li>Literacia Digital</li>
+                    <li>Office Básico</li>
+                    <li>Internet e Email</li>
+                    <li>Redes Sociais</li>
+                </ul>
+            </div>
+
+            <div class="nivel-card">
+                <div class="nivel-icon">📈</div>
+                <h3>Intermédio</h3>
+                <p>Para quem já tem conhecimentos e quer evoluir</p>
+                <ul>
+                    <li>Office Avançado</li>
+                    <li>Web Design</li>
+                    <li>Marketing Digital</li>
+                    <li>Bases de Dados</li>
+                </ul>
+            </div>
+
+            <div class="nivel-card">
+                <div class="nivel-icon">🚀</div>
+                <h3>Avançado</h3>
+                <p>Especialização técnica para profissionais</p>
+                <ul>
+                    <li>Programação</li>
+                    <li>Cibersegurança</li>
+                    <li>Cloud Computing</li>
+                    <li>DevOps</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="vantagens-section">
+        <h2 class="section-title">Porquê Escolher os Nossos Cursos?</h2>
+        <div class="vantagens-grid">
+            <div class="vantagem-card">
+                <div class="vantagem-icon">👨‍🏫</div>
+                <div class="vantagem-content">
+                    <h3>Formadores Especializados</h3>
+                    <p>Profissionais ativos na área com experiência real de mercado e paixão pelo ensino.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">💼</div>
+                <div class="vantagem-content">
+                    <h3>Projetos Práticos</h3>
+                    <p>Aprende fazendo. Todos os cursos incluem projetos reais aplicáveis ao teu trabalho.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">🏆</div>
+                <div class="vantagem-content">
+                    <h3>Certificação Reconhecida</h3>
+                    <p>Certificados oficiais que valorizam o teu currículo e são reconhecidos pelo mercado.

@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão e Administração | CMRFormação - Cursos Certificados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --business-gold: #f59e0b;
+            --business-blue: #3b82f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 208, 225, 0.3);
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-30px, 30px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(135deg, var(--business-gold), var(--business-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .hero-feature::before {
+            content: '✓';
+            color: var(--lime);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .hero-icons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .business-icon-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .business-icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.2);
+        }
+
+        .business-icon-box span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .business-icon-box p {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--business-gold), var(--business-blue));
+            color: white;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .cursos-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .cursos-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .curso-card {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border-top: 4px solid var(--business-gold);
+        }
+
+        .curso-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .curso-header {
+            background: linear-gradient(135deg, var(--business-gold), var(--business-blue));
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .curso-header span {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .curso-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .curso-body {
+            padding: 2rem;
+        }
+
+        .curso-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--business-gold);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .curso-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .curso-topics {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .curso-topics li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .curso-topics li::before {
+            content: '▸';
+            color: var(--lime);
+            font-weight: bold;
+        }
+
+        .curso-info {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #666;
+            flex-wrap: wrap;
+        }
+
+        .curso-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .competencias-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+        }
+
+        .competencias-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .competencia-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 4px solid var(--business-gold);
+        }
+
+        .competencia-card:nth-child(even) {
+            border-bottom-color: var(--business-blue);
+        }
+
+        .competencia-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .competencia-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .competencia-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .competencia-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .publico-section {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .publico-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .publico-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .publico-card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .publico-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .publico-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .publico-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .vantagens-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+        }
+
+        .vantagens-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .vantagem-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .vantagem-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .vantagem-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .vantagem-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .vantagem-content p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--business-gold), var(--business-blue));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--business-gold);
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--turquoise);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .publico-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vantagens-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#areas">Áreas</a></li>
+                <li><a href="index.html#formacoes">Formações</a></li>
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="nav-cta">Inscrever Agora</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>
+                    <span class="highlight">Gestão e Administração</span><br>
+                    Lidere com Excelência
+                </h1>
+                <p>
+                    Formação avançada em gestão empresarial, liderança e administração. 
+                    Desenvolve competências estratégicas para o sucesso organizacional.
+                </p>
+                <div class="hero-features">
+                    <div class="hero-feature">Certificação Reconhecida</div>
+                    <div class="hero-feature">Casos Práticos</div>
+                    <div class="hero-feature">Networking</div>
+                </div>
+                <a href="#cursos" class="btn btn-primary">Explorar Cursos</a>
+            </div>
+            <div class="hero-icons">
+                <div class="business-icon-box">
+                    <span>📊</span>
+                    <p>Gestão Estratégica</p>
+                </div>
+                <div class="business-icon-box">
+                    <span>👥</span>
+                    <p>Recursos Humanos</p>
+                </div>
+                <div class="business-icon-box">
+                    <span>💰</span>
+                    <p>Finanças</p>
+                </div>
+                <div class="business-icon-box">
+                    <span>📈</span>
+                    <p>Projetos</p>
+                </div>
+                <div class="business-icon-box">
+                    <span>🚀</span>
+                    <p>Empreendedorismo</p>
+                </div>
+                <div class="business-icon-box">
+                    <span>⚖️</span>
+                    <p>Legislação</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cursos-section" id="cursos">
+        <h2 class="section-title">Cursos Disponíveis</h2>
+        <p class="section-subtitle">
+            Formação completa para gestores, empresários e profissionais que querem evoluir na carreira
+        </p>
+        <div class="cursos-grid">
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>🏢</span>
+                    <h3>Gestão de Empresas</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Essencial</span>
+                    <p class="curso-description">
+                        Fundamentos e práticas avançadas de gestão empresarial. Planeamento estratégico, 
+                        análise financeira e tomada de decisão.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Planeamento e Estratégia Empresarial</li>
+                        <li>Gestão Financeira e Orçamental</li>
+                        <li>Análise de Mercado e Competitividade</li>
+                        <li>Gestão de Operações</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 60 horas</span>
+                        <span>👥 Presencial/Online</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>👥</span>
+                    <h3>Gestão de Recursos Humanos</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Alta Procura</span>
+                    <p class="curso-description">
+                        Gestão estratégica de pessoas. Recrutamento, desenvolvimento, avaliação de 
+                        desempenho e clima organizacional.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Recrutamento e Seleção</li>
+                        <li>Avaliação de Desempenho</li>
+                        <li>Formação e Desenvolvimento</li>
+                        <li>Legislação Laboral</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 50 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>💰</span>
+                    <h3>Contabilidade e Fiscalidade</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Especialização</span>
+                    <p class="curso-description">
+                        Domínio da contabilidade empresarial e obrigações fiscais. Preparação de 
+                        demonstrações financeiras e otimização fiscal.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Contabilidade Geral e Analítica</li>
+                        <li>IVA, IRS e IRC</li>
+                        <li>Demonstrações Financeiras</li>
+                        <li>Planeamento Fiscal</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 70 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>📈</span>
+                    <h3>Gestão de Projetos</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Metodologias Ágeis</span>
+                    <p class="curso-description">
+                        Planeamento, execução e controlo de projetos. Metodologias tradicionais 
+                        e ágeis (Scrum, Kanban).
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Ciclo de Vida de Projetos</li>
+                        <li>Metodologias PMI e Agile</li>
+                        <li>Gestão de Equipas e Stakeholders</li>
+                        <li>Ferramentas de Gestão</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 45 horas</span>
+                        <span>👥 Online/Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>🚀</span>
+                    <h3>Empreendedorismo e Inovação</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Inspirador</span>
+                    <p class="curso-description">
+                        Cria e desenvolve o teu negócio. Plano de negócios, financiamento, 
+                        marketing e estratégias de crescimento.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Criação de Plano de Negócios</li>
+                        <li>Modelos de Negócio Inovadores</li>
+                        <li>Financiamento e Investimento</li>
+                        <li>Pitch e Apresentação</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 40 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="curso-card">
+                <div class="curso-header">
+                    <span>⚡</span>
+                    <h3>Liderança e Gestão de Equipas</h3>
+                </div>
+                <div class="curso-body">
+                    <span class="curso-tag">Desenvolvimento</span>
+                    <p class="curso-description">
+                        Competências de liderança eficaz. Motivação, comunicação, resolução de 
+                        conflitos e desenvolvimento de equipas.
+                    </p>
+                    <ul class="curso-topics">
+                        <li>Estilos de Liderança</li>
+                        <li>Comunicação Eficaz</li>
+                        <li>Gestão de Conflitos</li>
+                        <li>Motivação e Engagement</li>
+                    </ul>
+                    <div class="curso-info">
+                        <span>⏱️ 35 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="competencias-section">
+        <h2 class="section-title">Competências que Vais Desenvolver</h2>
+        <p class="section-subtitle">
+            Habilidades essenciais para gestores e líderes de sucesso no mercado atual
+        </p>
+        <div class="competencias-grid">
+            <div class="competencia-card">
+                <div class="competencia-icon">🎯</div>
+                <h3>Pensamento Estratégico</h3>
+                <p>Visão de longo prazo, análise crítica e tomada de decisões fundamentadas.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">💡</div>
+                <h3>Resolução de Problemas</h3>
+                <p>Abordagens sistemáticas para identificar e resolver desafios complexos.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">🗣️</div>
+                <h3>Comunicação</h3>
+                <p>Comunicação clara, persuasiva e adaptada a diferentes públicos.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">📊</div>
+                <h3>Análise Financeira</h3>
+                <p>Interpretação de dados financeiros e gestão orçamental eficaz.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">👥</div>
+                <h3>Gestão de Pessoas</h3>
+                <p>Desenvolvimento, motivação e retenção de talento nas organizações.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">🔄</div>
+                <h3>Gestão da Mudança</h3>
+                <p>Liderar processos de transformação e inovação organizacional.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">⚖️</div>
+                <h3>Ética e Compliance</h3>
+                <p>Gestão responsável com conhecimento da legislação e normas.</p>
+            </div>
+
+            <div class="competencia-card">
+                <div class="competencia-icon">🌐</div>
+                <h3>Visão de Mercado</h3>
+                <p>Compreensão do ambiente competitivo e tendências do setor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="publico-section">
+        <h2 class="section-title">Para Quem São Estes Cursos?</h2>
+        <p class="section-subtitle">
+            Formação adaptada a diferentes perfis profissionais e objetivos de carreira
+        </p>
+        <div class="publico-grid">
+            <div class="publico-card">
+                <div class="publico-icon">👔</div>
+                <h3>Gestores e Diretores</h3>
+                <p>Profissionais em cargos de gestão que querem aperfeiçoar competências e atualizar conhecimentos para liderar com mais eficácia.</p>
+            </div>
+
+            <div class="publico-card">
+                <div class="publico-icon">🚀</div>
+                <h3>Empreendedores</h3>
+                <p>Empresários e futuros empreendedores que necessitam de ferramentas práticas para criar, gerir e fazer crescer os seus negócios.</p>
+            </div>
+
+            <div class="publico-card">
+                <div class="publico-icon">📈</div>
+                <h3>Profissionais em Transição</h3>
+                <p>Colaboradores que aspiram a cargos de gestão e querem preparar-se adequadamente para dar o próximo passo na carreira.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="vantagens-section">
+        <h2 class="section-title">Porquê Escolher os Nossos Cursos?</h2>
+        <div class="vantagens-grid">
+            <div class="vantagem-card">
+                <div class="vantagem-icon">🎓</div>
+                <div class="vantagem-content">
+                    <h3>Formadores Experientes</h3>
+                    <p>Profissionais com vasta experiência empresarial e académica, que partilham casos reais e melhores práticas do mercado.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">💼</div>
+                <div class="vantagem-content">
+                    <h3>Metodologia Prática</h3>
+                    <p>Aprendizagem baseada em casos reais, simulações empresariais e projetos aplicados diretamente à tua realidade profissional.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">🏆</div>
+                <div class="vantagem-content">
+                    <h3>Certificação Reconhecida</h3>
+                    <p>Certificados oficiais que valorizam o teu CV e são reconhecidos por empresas e instituições em Portugal e na Europa.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">🤝</div>
+                <div class="vantagem-content">
+                    <h3>Networking Profissional</h3>
+                    <p>Conecta-te com outros gestores, empreendedores e profissionais, criando uma rede valiosa de contactos empresariais.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">📚</div>
+                <div class="vantagem-content">
+                    <h3>Material Exclusivo</h3>
+                    <p>Acesso a recursos didáticos atualizados, templates, ferramentas de gestão e biblioteca digital de apoio.</p>
+                </div>
+            </div>
+
+            <div class="vantagem-card">
+                <div class="vantagem-icon">⏰</div>
+                <div class="vantagem-content">
+                    <h3>Flexibilidade de Horários</h3>
+                    <p>Opções presenciais e online, com horários adaptados a profissionais com agendas exigentes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <h2>Investe no Teu Futuro Profissional</h2>
+        <p>Dá o próximo passo na tua carreira com formação de excelência em Gestão e Administração</p>
+        <a href="mailto:geral@cmrformacao.pt" class="btn btn-white">Pedir Informações</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CMRFormação</h3>
+                <p>Centro de Formação Profissional dedicado à excelência e qualidade na formação de profissionais.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Áreas de Formação</h3>
+                <a href="informatica-tecnologia.html">Informática e Tecnologia</a>
+                <a href="gestao-administracao.html">Gestão e Administração</a>
+                <a href="index.html#areas">Línguas</a>
+                <a href="index.html#areas">Segurança</a>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <a href="index.html#sobre">Sobre Nós</a>
+                <a href="index.html#formacoes">Catálogo</a>
+                <a href="Landing page carla rafael.html">Carla Rafael</a>
+                <a href="#contacto">Contactos</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contactos</h3>
+                <p>📧 geral@cmrformacao.pt</p>
+                <p>📞 +351 XXX XXX XXX</p>
+                <p>📍 Ponte de Lima, Portugal</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CMRFormação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
+                

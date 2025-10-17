@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | CMRFormação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 208, 225, 0.3);
+        }
+
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1) 0%, rgba(192, 215, 45, 0.1) 100%);
+            padding: 150px 5% 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(77, 208, 225, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 40px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .principios-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .principio-card {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--turquoise);
+            transition: all 0.3s;
+        }
+
+        .principio-card:nth-child(even) {
+            border-left-color: var(--lime);
+        }
+
+        .principio-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .principio-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .principio-numero {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .principio-titulo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .principio-descricao {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .compromisso-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.05) 0%, rgba(192, 215, 45, 0.05) 100%);
+        }
+
+        .compromisso-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .compromisso-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+
+        .compromisso-text {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .icon-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .icon-box span {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .icon-box p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .cta-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--turquoise);
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--turquoise);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .principio-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#areas">Áreas</a></li>
+                <li><a href="index.html#formacoes">Formações</a></li>
+                <li><a href="Landing page carla rafael.html">Carla Rafael</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="index.html#contacto" class="nav-cta">Pedir Informações</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Política de Privacidade</h1>
+            <p>
+                Compromisso com a transparência, ética e proteção de dados pessoais
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-container">
+            <p class="intro-text">
+                A CMRFormação entende como princípios basilares do desenvolvimento da sua atividade, 
+                transmitidos a todos os seus colaboradores, clientes e fornecedores, os seguintes valores:
+            </p>
+
+            <div class="principios-grid">
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">1</div>
+                        <h3 class="principio-titulo">Transparência e Idoneidade</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Transparência e idoneidade nas relações com funcionários/as, colaboradores/as, 
+                        utilizadores/as dos serviços e entidades clientes e fornecedoras.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">2</div>
+                        <h3 class="principio-titulo">Seriedade e Honestidade</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Seriedade e honestidade que exige dos funcionários/as, colaboradores/as, 
+                        utilizadores/as dos serviços e entidades clientes e fornecedoras.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">3</div>
+                        <h3 class="principio-titulo">Rigor Técnico-Científico</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Rigor técnico-científico na execução dos trabalhos contratados, em conformidade 
+                        com os objetivos, os contratos estabelecidos e legislação e as normas/procedimentos 
+                        em vigor para cada projeto em concreto.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">4</div>
+                        <h3 class="principio-titulo">Inovação</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Inovação por via da implementação de novas tecnologias e metodologias.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">5</div>
+                        <h3 class="principio-titulo">Integração da Perspetiva de Género</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Integração da perspetiva do género, garantindo que a diferença de sexo não pode 
+                        ser utilizada como base para a discriminação no tratamento dos/as funcionários/as, 
+                        colaboradores/as, entidades clientes e fornecedoras e utilizadores/as dos serviços 
+                        prestados. Garante também a adoção de linguagem não discriminatória nos documentos 
+                        de sua autoria.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">6</div>
+                        <h3 class="principio-titulo">Princípio da Igualdade</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Integração do princípio da igualdade, garantindo o disposto no art.º 13º da 
+                        Constituição portuguesa, de não discriminação dos/as funcionários/as, colaboradores/as, 
+                        entidades clientes e fornecedoras e utilizadores/as dos serviços prestados, em função 
+                        da ascendência, sexo, raça, língua, território de origem, religião, convicções políticas 
+                        ou ideológicas, instrução, situação económica ou condição social.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">7</div>
+                        <h3 class="principio-titulo">Cooperação</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Cooperação com outras entidades, numa perspetiva de complementaridade, partilha de 
+                        saberes, metodologias e processos, consubstanciada na formalização de parcerias para 
+                        o desenvolvimento de determinados projetos e assumindo no seio das parcerias estabelecidas 
+                        total solidariedade face à assunção de riscos.
+                    </p>
+                </div>
+
+                <div class="principio-card">
+                    <div class="principio-header">
+                        <div class="principio-numero">8</div>
+                        <h3 class="principio-titulo">Proteção de Dados Pessoais</h3>
+                    </div>
+                    <p class="principio-descricao">
+                        Proteção de dados pessoais, de acordo com a Lei nº 67/98 de 26 de outubro que transpõe 
+                        para a ordem jurídica interna a Diretiva n.º 95/46/CE, do Parlamento Europeu e do Conselho, 
+                        de 24 de Outubro de 1995, relativa à proteção das pessoas singulares no que diz respeito 
+                        ao tratamento de dados pessoais e à livre circulação desses dados, e em conformidade com 
+                        o Regulamento Geral de Proteção de Dados (RGPD).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="compromisso-section">
+        <div class="compromisso-content">
+            <h2>O Nosso Compromisso</h2>
+            <p class="compromisso-text">
+                Na CMRFormação, a proteção dos seus dados pessoais é uma prioridade. 
+                Comprometemo-nos a garantir a segurança, confidencialidade e integridade 
+                de todas as informações que nos confia.
+            </p>
+
+            <div class="icons-grid">
+                <div class="icon-box">
+                    <span>🔒</span>
+                    <h3>Segurança</h3>
+                    <p>Proteção total dos seus dados</p>
+                </div>
+                <div class="icon-box">
+                    <span>🤝</span>
+                    <h3>Confiança</h3>
+                    <p>Transparência em todas as relações</p>
+                </div>
+                <div class="icon-box">
+                    <span>⚖️</span>
+                    <h3>Conformidade</h3>
+                    <p>Respeito pela legislação vigente</p>
+                </div>
+                <div class="icon-box">
+                    <span>✓</span>
+                    <h3>Ética</h3>
+                    <p>Conduta profissional exemplar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Tem Questões sobre a Nossa Política?</h2>
+        <p>Estamos disponíveis para esclarecer todas as suas dúvidas</p>
+        <a href="mailto:geral@cmrformacao.pt" class="btn btn-white">Contactar-nos</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CMRFormação</h3>
+                <p>Centro de Formação Profissional dedicado à excelência e qualidade na formação de profissionais.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index.html">Página Principal</a>
+                <a href="missao-visao-valores.html">Missão, Visão e Valores</a>
+                <a href="index.html#areas">Áreas de Formação</a>
+                <a href="Landing page carla rafael.html">Carla Rafael</a>
+            </div>
+            <div class="footer-section">
+                <h3>Áreas de Formação</h3>
+                <a href="informatica-tecnologia.html">Informática</a>
+                <a href="gestao-administracao.html">Gestão</a>
+                <a href="index.html#areas">Línguas</a>
+                <a href="index.html#areas">Segurança</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contactos</h3>
+                <p>📧 geral@cmrformacao.pt</p>
+                <p>📞 +351 XXX XXX XXX</p>
+                <p>📍 Ponte de Lima, Portugal</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 CMRFormação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

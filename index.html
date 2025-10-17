@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMRFormação - Centro de Formação Profissional | Excelência em Formação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #4DD0E1;
+            --lime: #C0D72D;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--lime);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.7rem 1.8rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(77, 208, 225, 0.3);
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.1) 0%, rgba(192, 215, 45, 0.1) 100%);
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -15%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(77, 208, 225, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-40px, 40px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            color: white;
+            box-shadow: 0 10px 30px rgba(77, 208, 225, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(77, 208, 225, 0.4);
+        }
+
+        .sobre {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .sobre-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .sobre-card {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+
+        .sobre-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .sobre-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sobre-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .sobre-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .areas {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(77, 208, 225, 0.05) 0%, rgba(192, 215, 45, 0.05) 100%);
+        }
+
+        .areas-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .area-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border-left: 5px solid var(--turquoise);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .area-card:nth-child(even) {
+            border-left-color: var(--lime);
+        }
+
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .area-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .area-card ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .area-card li {
+            padding: 0.7rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .area-card li::before {
+            content: '✓';
+            color: var(--lime);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .area-card .btn {
+            margin-top: 1.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .formacoes {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .formacoes-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .formacao-card {
+            background: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .formacao-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .formacao-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .formacao-content {
+            padding: 2rem;
+        }
+
+        .formacao-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(77, 208, 225, 0.1);
+            color: var(--turquoise);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .formacao-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .formacao-info {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .formacao-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, var(--turquoise), var(--lime));
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--turquoise);
+        }
+
+        .btn-white:hover {
+            background: var(--dark);
+            color: white;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--turquoise);
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            margin: 0.8rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--lime);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--turquoise);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .sobre-grid,
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="50,10 90,30 90,70 50,90" fill="#4DD0E1"/>
+                    <polygon points="50,10 10,30 10,70 50,90" fill="#C0D72D"/>
+                    <polygon points="50,10 90,30 50,50 10,30" fill="#ffffff"/>
+                </svg>
+                <span>CMRFormação</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#areas">Áreas</a></li>
+                <li><a href="#formacoes">Formações</a></li>
+                <li><a href="Landing page carla rafael.html">Carla Rafael</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="nav-cta">Pedir Informações</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Centro de Formação <span class="highlight">Profissional</span>
+            </h1>
+            <p class="tagline">
+                Formação certificada e de qualidade em diversas áreas profissionais. 
+                Desenvolva competências, impulsione a sua carreira.
+            </p>
+            <a href="#formacoes" class="btn btn-primary">Explorar Formações</a>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">2000+</div>
+                    <div class="stat-label">Formandos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Empresas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Anos Experiência</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">97%</div>
+                    <div class="stat-label">Satisfação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobre">
+        <h2 class="section-title">Por que Escolher CMRFormação?</h2>
+        <p class="section-subtitle">
+            Somos um centro de formação profissional especializado em oferecer cursos certificados 
+            em múltiplas áreas, com foco na qualidade e empregabilidade.
+        </p>
+        <div class="sobre-grid">
+            <div class="sobre-card">
+                <div class="sobre-icon">🎯</div>
+                <h3>Formação Certificada</h3>
+                <p>Todos os nossos cursos são certificados e reconhecidos oficialmente, valorizando o seu currículo profissional.</p>
+            </div>
+            <div class="sobre-card">
+                <div class="sobre-icon">👥</div>
+                <h3>Formadores Qualificados</h3>
+                <p>Equipa de formadores experientes e qualificados nas suas áreas de especialização.</p>
+            </div>
+            <div class="sobre-card">
+                <div class="sobre-icon">💼</div>
+                <h3>Empregabilidade</h3>
+                <p>Formações práticas e orientadas para as necessidades reais do mercado de trabalho.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="areas" id="areas">
+        <h2 class="section-title">Áreas de Formação</h2>
+        <p class="section-subtitle">
+            Oferecemos formação profissional em diversas áreas para particulares e empresas
+        </p>
+        <div class="areas-grid">
+            <div class="area-card">
+                <h3>💻 Informática e Tecnologia</h3>
+                <ul>
+                    <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                    <li>Literacia Digital</li>
+                    <li>Programação Web</li>
+                    <li>Redes Sociais e Marketing Digital</li>
+                    <li>Segurança Informática</li>
+                </ul>
+                <a href="informatica-tecnologia.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+
+            <div class="area-card">
+                <h3>📊 Gestão e Administração</h3>
+                <ul>
+                    <li>Gestão de Empresas</li>
+                    <li>Recursos Humanos</li>
+                    <li>Contabilidade e Fiscalidade</li>
+                    <li>Gestão de Projetos</li>
+                    <li>Empreendedorismo</li>
+                </ul>
+                <a href="gestao-administracao.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+
+            <div class="area-card">
+                <h3>🗣️ Línguas</h3>
+                <ul>
+                    <li>Inglês (Todos os Níveis)</li>
+                    <li>Espanhol</li>
+                    <li>Francês</li>
+                    <li>Português para Estrangeiros</li>
+                    <li>Alemão</li>
+                </ul>
+                <a href="linguas.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+
+            <div class="area-card">
+                <h3>🛡️ Segurança e Higiene</h3>
+                <ul>
+                    <li>Segurança e Higiene no Trabalho</li>
+                    <li>Primeiros Socorros</li>
+                    <li>Higiene e Segurança Alimentar (HACCP)</li>
+                    <li>Prevenção de Incêndios</li>
+                    <li>Gestão de Resíduos</li>
+                </ul>
+                <a href="seguranca-higiene.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+
+            <div class="area-card">
+                <h3>🛒 Comércio e Atendimento</h3>
+                <ul>
+                    <li>Atendimento ao Cliente</li>
+                    <li>Técnicas de Venda</li>
+                    <li>Gestão de Reclamações</li>
+                    <li>Merchandising</li>
+                    <li>Gestão de Stocks</li>
+                </ul>
+                <a href="comercio-atendimento.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+
+            <div class="area-card">
+                <h3>🎨 Design e Criatividade</h3>
+                <ul>
+                    <li>Design Gráfico</li>
+                    <li>Fotografia Digital</li>
+                    <li>Edição de Vídeo</li>
+                    <li>Adobe Creative Suite</li>
+                    <li>Comunicação Visual</li>
+                </ul>
+                <a href="design-page.html" class="btn btn-primary">Ver Cursos</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="formacoes" id="formacoes">
+        <h2 class="section-title">Formações em Destaque</h2>
+        <p class="section-subtitle">
+            Cursos certificados com metodologias práticas e aplicação profissional imediata
+        </p>
+        <div class="formacoes-grid">
+            <div class="formacao-card">
+                <div class="formacao-image">💻</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Informática</span>
+                    <h3>Microsoft Office Avançado</h3>
+                    <p>Domine as ferramentas essenciais do pacote Office. Excel, Word e PowerPoint ao nível profissional.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 50 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="formacao-card">
+                <div class="formacao-image">🗣️</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Línguas</span>
+                    <h3>Inglês Profissional</h3>
+                    <p>Desenvolva competências em inglês para o contexto empresarial e profissional.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 100 horas</span>
+                        <span>👥 Grupo</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="formacao-card">
+                <div class="formacao-image">🛡️</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Segurança</span>
+                    <h3>Segurança no Trabalho</h3>
+                    <p>Formação obrigatória em Segurança e Higiene no Trabalho. Certificação reconhecida oficialmente.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 35 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="formacao-card">
+                <div class="formacao-image">📊</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Gestão</span>
+                    <h3>Gestão de Recursos Humanos</h3>
+                    <p>Aprenda as melhores práticas de gestão de pessoas e desenvolvimento organizacional.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 60 horas</span>
+                        <span>👥 Online/Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="formacao-card">
+                <div class="formacao-image">🎨</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Design</span>
+                    <h3>Design Gráfico</h3>
+                    <p>Crie designs profissionais com as ferramentas mais utilizadas no mercado.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 80 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+
+            <div class="formacao-card">
+                <div class="formacao-image">🛒</div>
+                <div class="formacao-content">
+                    <span class="formacao-tag">Comércio</span>
+                    <h3>Atendimento ao Cliente</h3>
+                    <p>Técnicas e estratégias para um atendimento de excelência e fidelização de clientes.</p>
+                    <div class="formacao-info">
+                        <span>⏱️ 25 horas</span>
+                        <span>👥 Presencial</span>
+                        <span>📜 Certificado</span>
+                    </div>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Saber Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contacto">
+        <h2>Pronto para Investir no Seu Futuro?</h2>
+        <p>Entre em contacto connosco e descubra a formação ideal para si ou para a sua empresa</p>
+        <a href="mailto:geral@cmrformacao.pt" class="btn btn-white">Contactar Agora</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CMRFormação</h3>
+                <p>Centro de Formação Profissional dedicado à excelência e qualidade na formação de profissionais.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Formações</h3>
+                <a href="informatica-tecnologia.html">Informática</a>
+                <a href="gestao-administracao.html">Gestão</a>
+                <a href="linguas.html">Línguas</a>
+                <a href="seguranca-higiene.html">Segurança</a>
+            </div>
+            <div class="footer-section">
+                <h3>Empresa</h3>
+                <a href="#sobre">Sobre Nós</a>
+                <a href="missao-visao-valores.html">Missão e Valores</a>
+                <a href="#formacoes">Catálogo</a>
+                <a href="politica_privacidade.html">Política Privacidade</a>
+                <a href="#contacto">Contactos</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contactos</h3>
+                <p>📧 geral@cmrformacao.pt</p>
+                <p>📞 +351 XXX XXX XXX</p>
+                <p>📍 Ponte de Lima, Portugal</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 CMRFormação. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
